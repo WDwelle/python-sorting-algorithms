@@ -12,5 +12,7 @@ def selectionSort(arr):
 #example data set
 arr = [12, 8, 3, 20, 11]
 
+#call sort
 selectionSort(arr)
+#print result
 print(arr)
