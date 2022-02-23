@@ -7,7 +7,7 @@ bubble = BubbleSort()
 select = SelectSort()
 
 
-sort = input("which sort would you like to use?")
+sort = input("which sort would you like to use (type: bubble or select)?")
 
 
 if sort == ("bubble"):
