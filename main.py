@@ -1,5 +1,5 @@
-from bubble import BubbleSort
-from selectionSort import SelectSort
+from models.bubble import BubbleSort
+from models.selectionSort import SelectSort
 
 arr = [10, 65, 12, 1, 7, 69, 85, 11, 15, 42]
 
