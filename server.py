@@ -1,14 +1,7 @@
-from flask import Flask, render_template
-from models.bubble import BubbleSort
-from models.selectionSort import SelectSort
+from flask_app.controllers import sorts
+from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app import app
 
-
-app = Flask(__name__)
-
-@app.route('/')
-
-def hello():
-    return render_template('index.html')
 
 arr = [10, 65, 12, 1, 7, 69, 85, 11, 15, 42]
 
@@ -36,4 +29,5 @@ select = SelectSort()
 #     print(arr)
 
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
