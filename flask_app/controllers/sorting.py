@@ -11,16 +11,15 @@ def index():
 #Submit and sort data
 @app.route('/submit', methods = ["POST"])
 def sort():
-    data = {
-        "sort" : request.form.get("sorts")
-    }
+
+    session["sort"] = request.form.get("sorts")
 
     arr = [10, 65, 12, 1, 7, 69, 85, 11, 15, 42]
 
     bubble = BubbleSort()
     select = SelectSort()
 
-    if data == ("bubble"):
+    if session['sort'] == ("bubble"):
         print("unsorted array:")
         print(arr)
 
@@ -28,7 +27,7 @@ def sort():
         bubble.bubbleSort(arr)
         print(arr)
 
-    elif data == ("select"):
+    elif session['sort'] == ("select"):
         print("unsorted array:")
         print(arr)
 
@@ -42,4 +41,4 @@ def sort():
 @app.route('/sorted')
 def sorted():
 
-    return render_template("sorted-data.html")
+    return render_template("sorted-data.html", sort=session["sort"])
