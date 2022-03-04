@@ -12,9 +12,9 @@ def index():
 @app.route('/submit', methods = ["POST"])
 def sort():
 
-    session["sort"] = request.form.get("sorts")
-
     arr = [10, 65, 12, 1, 7, 69, 85, 11, 15, 42]
+    session["arr"] = arr
+    session["sort"] = request.form.get("sorts")
 
     bubble = BubbleSort()
     select = SelectSort()
@@ -40,5 +40,4 @@ def sort():
 
 @app.route('/sorted')
 def sorted():
-
-    return render_template("sorted-data.html", sort=session["sort"])
+    return render_template("sorted-data.html", sort=session["sort"], arr=session["arr"])
