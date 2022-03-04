@@ -1,3 +1,4 @@
+from email.mime import base
 from flask_app import app
 from flask import render_template,redirect,request,session,flash
 from flask_app.models.bubble import BubbleSort
@@ -12,8 +13,14 @@ def index():
 @app.route('/submit', methods = ["POST"])
 def sort():
 
-    arr = [10, 65, 12, 1, 7, 69, 85, 11, 15, 42]
-    originalArr = [10, 65, 12, 1, 7, 69, 85, 11, 15, 42]
+    arr = []
+    data = request.form.get("arrValues")
+    nums = data.split(',')
+    arr = [int(num, base=16) for num in nums]
+    originalArr = []
+    data = request.form.get("arrValues")
+    nums = data.split(',')
+    originalArr = [int(num, base=16) for num in nums]
     session["originalArr"] = originalArr
     session["arr"] = arr
     session["sort"] = request.form.get("sorts")
@@ -24,7 +31,7 @@ def sort():
     if session['sort'] == ("bubble"):
         print("unsorted array:")
         print(arr)
-        session["originalArr"] = originalArr
+        print(session["originalArr"])
 
         print("sorted array:")
         bubble.bubbleSort(arr)
@@ -33,7 +40,7 @@ def sort():
     elif session['sort'] == ("select"):
         print("unsorted array:")
         print(arr)
-        session["originalArr"] = originalArr
+        print(session["originalArr"])
 
         print("sorted array:")
         select.selectionSort(arr)
@@ -44,4 +51,5 @@ def sort():
 
 @app.route('/sorted')
 def sorted():
-    return render_template("sorted-data.html", sort=session["sort"], arr=session["arr"], originalArr=["originalArr"])
+    print(session['originalArr'])
+    return render_template("sorted-data.html", sort=session["sort"], arr=session["arr"], originalArr=session["originalArr"])
