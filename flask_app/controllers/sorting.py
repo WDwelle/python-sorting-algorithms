@@ -16,11 +16,11 @@ def sort():
     arr = []
     data = request.form.get("arrValues")
     nums = data.split(',')
-    arr = [int(num, base=16) for num in nums]
+    arr = [int(num) for num in nums]
     originalArr = []
     data = request.form.get("arrValues")
     nums = data.split(',')
-    originalArr = [int(num, base=16) for num in nums]
+    originalArr = [int(num) for num in nums]
     session["originalArr"] = originalArr
     session["arr"] = arr
     session["sort"] = request.form.get("sorts")
