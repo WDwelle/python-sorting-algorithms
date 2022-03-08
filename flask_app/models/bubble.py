@@ -1,7 +1,8 @@
+# -*- coding: UTF-8 -*-
 class BubbleSort:
 
     def bubbleSort(self, arr):
-        print("Running bubble sort")
+        #print("Running bubble sort")
         n = len(arr)
 
         for i in range(n-1):

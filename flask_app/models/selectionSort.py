@@ -1,7 +1,8 @@
+# -*- coding: UTF-8 -*-
 class SelectSort:
 
     def selectionSort(self, arr):
-        print("Running Selection sort")
+        #print("Running Selection sort")
         #loop through array
         for i in range(len(arr)):
             #set variable for our lowest value

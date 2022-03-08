@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from email.mime import base
 from flask_app import app
 from flask import render_template,redirect,request,session,flash
@@ -29,27 +30,27 @@ def sort():
     select = SelectSort()
 
     if session['sort'] == ("bubble"):
-        print("unsorted array:")
-        print(arr)
-        print(session["originalArr"])
+        #print("unsorted array:")
+        #print(arr)
+        #print(session["originalArr"])
 
-        print("sorted array:")
+        #print("sorted array:")
         bubble.bubbleSort(arr)
-        print(arr)
+        #print(arr)
 
     elif session['sort'] == ("select"):
-        print("unsorted array:")
-        print(arr)
-        print(session["originalArr"])
+        #print("unsorted array:")
+        #print(arr)
+        #print(session["originalArr"])
 
-        print("sorted array:")
+        #print("sorted array:")
         select.selectionSort(arr)
-        print(arr)
+        #print(arr)
 
     return redirect('/sorted')
 
 
 @app.route('/sorted')
 def sorted():
-    print(session['originalArr'])
+    #print(session['originalArr'])
     return render_template("sorted-data.html", sort=session["sort"], arr=session["arr"], originalArr=session["originalArr"])
