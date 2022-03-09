@@ -1,0 +1,23 @@
+name: publish
+
+on: [push]
+
+jobs:
+  publish sort:
+    runs-on: python:3
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Login to Github Container Registry
+      uses: docker/login-actions@v1
+      with:
+        registry: python-sorting-algorithms.io
+        username: ${{ github.gitname }}
+        password: ${{ github.secretkey }}
+
+    - name: Build the sort image
+      run: |
+        docker build -t sort .
+        docker run -ti -p 5000:5000 sort bash
+        docker push sort .
