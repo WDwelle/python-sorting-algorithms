@@ -1,15 +1,15 @@
-FROM python:3.8-alpine
+FROM python:3
 
-WORKDIR /
+WORKDIR /app
 
-COPY . .
+RUN mkdir app
 
-RUN pip install flask
+COPY . /app
+
+RUN apt-get -y update
+RUN pip3 install -r requirements.txt
 
 EXPOSE 5000
 
-ADD "server.py" /
-
-ENTRYPOINT ["python"]
-
-CMD ["server.py"]
+#Run the command
+CMD [“python3”, “./app/server.py”]
