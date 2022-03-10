@@ -3,7 +3,7 @@ name: publish
 on: [push]
 
 jobs:
-  publish sort:
+  publishSort:
     runs-on: python:3
 
     steps:
@@ -19,5 +19,4 @@ jobs:
     - name: Build the sort image
       run: |
         docker build -t sort .
-        docker run -ti -p 5000:5000 sort bash
         docker push sort .
