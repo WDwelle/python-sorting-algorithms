@@ -3,7 +3,7 @@ name: publish
 on: [push]
 
 jobs:
-  publish sort:
+  publishSort:
     runs-on: python:3
 
     steps:
