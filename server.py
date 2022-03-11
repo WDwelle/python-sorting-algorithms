@@ -5,4 +5,4 @@ from flask_app import app
 app.secret_key = "you were my brother, Anakin"
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(debug=True)
