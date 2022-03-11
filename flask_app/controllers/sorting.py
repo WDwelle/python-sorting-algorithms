@@ -35,7 +35,7 @@ def sort():
     elif session['sort'] == ("select"):
         select.selectionSort(arr)
 
-    elif session['sort'] == ("insert"):
+    elif session["sort"] == ("insert"):
         insert.inserSort(arr)
 
     return redirect('/sorted')
