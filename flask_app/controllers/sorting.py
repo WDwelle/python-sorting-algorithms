@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template,redirect,request,session,flash
 from flask_app.models.bubble import BubbleSort
+from flask_app.models.insertSort import InserSort
 from flask_app.models.selectionSort import SelectSort
 
 #Home
@@ -26,24 +27,16 @@ def sort():
 
     bubble = BubbleSort()
     select = SelectSort()
+    insert = InserSort()
 
     if session['sort'] == ("bubble"):
-        print("unsorted array:")
-        print(arr)
-        print(session["originalArr"])
-
-        print("sorted array:")
         bubble.bubbleSort(arr)
-        print(arr)
 
     elif session['sort'] == ("select"):
-        print("unsorted array:")
-        print(arr)
-        print(session["originalArr"])
-
-        print("sorted array:")
         select.selectionSort(arr)
-        print(arr)
+
+    elif session["sort"] == ("insert"):
+        insert.inserSort(arr)
 
     return redirect('/sorted')
 
